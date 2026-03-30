@@ -1,0 +1,61 @@
+<aside class="w-64 flex h-full flex-col 
+                bg-violet-100/60 backdrop-blur-md
+                border-r border-violet-300/30
+                shadow-[4px_0_20px_rgba(124,58,237,0.1)]">
+
+    <!-- HEADER -->
+    <div class="p-4 shrink-0">
+      <h2 class="text-xl text-center font-semibold text-violet-900">
+        Inventario
+      </h2>
+    </div>
+
+    <!-- MENU SCROLLABLE -->
+    <div class="sidebar-scroll">
+
+      @for (item of menu(); track item.label) {
+
+        <div class="mb-2">
+
+          <!-- ITEM -->
+          <button 
+            (click)="toggle(item)"
+            class="w-full flex items-center justify-between px-3 py-2 rounded-lg
+                   text-violet-800 font-medium
+                   hover:bg-violet-200/40 transition">
+
+            <div class="flex items-center gap-2">
+              <i [class]="item.icon"></i>
+              <span>{{ item.label }}</span>
+            </div>
+
+            <i class="fas"
+              [class.fa-chevron-down]="!item.open"
+              [class.fa-chevron-up]="item.open">
+            </i>
+          </button>
+
+          <!-- SUBMENU -->
+          @if (item.open) {
+            <div class="ml-6 mt-2 flex flex-col gap-2">
+
+              @for (sub of item.children; track sub.label) {
+                <a [routerLink]="sub.route"
+                  class="px-3 py-2 rounded-lg text-sm
+                         text-violet-700
+                         hover:bg-violet-200/40 transition">
+
+                  {{ sub.label }}
+                </a>
+              }
+
+            </div>
+          }
+
+        </div>
+
+      }
+
+    </div>
+
+  </aside>

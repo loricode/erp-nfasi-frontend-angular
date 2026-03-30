@@ -1,0 +1,32 @@
+/* Clase para el div scrollable */
+.sidebar-scroll {
+  flex: 1;                 /* Ocupa todo el espacio restante */
+  overflow-y: auto;        /* Scroll vertical si hay overflow */
+  padding-right: 4px;      /* Evita que el contenido quede pegado al scroll */
+}
+
+/* Scrollbar Webkit (Chrome, Edge, Safari) */
+.sidebar-scroll::-webkit-scrollbar {
+  width: 8px;              /* Ancho de la barra */
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: rgba(236, 232, 255, 0.3); /* Color pastel del track */
+  border-radius: 8px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(124, 58, 237, 0.5); /* Pulgar violeta pastel */
+  border-radius: 8px;
+  border: 2px solid rgba(236, 232, 255, 0.3); /* Espacio alrededor del pulgar */
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(124, 58, 237, 0.7); /* Hover más intenso */
+}
+
+/* Firefox */
+.sidebar-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124, 58, 237, 0.5) rgba(236, 232, 255, 0.3);
+}

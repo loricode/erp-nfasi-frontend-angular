@@ -1,0 +1,77 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-50 ">
+
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="md:bg-white p-6 md:rounded-xl md:shadow-md  w-full 
+         sm:w-96 
+         md:w-[28rem] 
+         lg:w-[32rem] 
+         xl:w-80">
+
+            <div class="flex items-center justify-center">
+                <svg width="220" height="80" viewBox="0 0 220 80" xmlns="http://www.w3.org/2000/svg">
+
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%">
+                            <stop offset="0%" stop-color="#1E3A8A" />
+                            <stop offset="100%" stop-color="#7C3AED" />
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Grupo centrado -->
+                    <g transform="translate(82,10)">
+                        <rect x="0" y="10" width="15" height="15" rx="3" fill="url(#grad1)" />
+                        <rect x="20" y="0" width="15" height="15" rx="3" fill="url(#grad1)" />
+                        <rect x="40" y="10" width="15" height="15" rx="3" fill="url(#grad1)" />
+
+                        <line x1="15" y1="17" x2="20" y2="7" stroke="#7C3AED" stroke-width="2" />
+                        <line x1="35" y1="7" x2="40" y2="17" stroke="#7C3AED" stroke-width="2" />
+                    </g>
+
+                    <!-- ERP centrado -->
+                    <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" font-size="18"
+                        font-weight="bold" fill="#1E3A8A">
+                        ERP
+                    </text>
+
+                    <!-- NFASI centrado -->
+                    <text x="50%" y="76%" text-anchor="middle" font-size="16" font-weight="600" fill="#7C3AED">
+                        NFASI
+                    </text>
+
+                </svg>
+            </div>
+
+            <div class="flex gap-3 flex-col mb-3">
+
+                <div>
+                    <input type="email" formControlName="email" placeholder="Correo electrónico"
+                        class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+                    @if(loginForm.get('email')?.touched && loginForm.get('email')?.invalid){
+                    <div class="text-red-500 text-sm">
+                        Email inválido
+                    </div>
+                    }
+                </div>
+
+                <div>
+
+
+                    <input type="password" formControlName="password" placeholder="Contraseña"
+                        class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+                    @if (loginForm.get('password')?.touched && loginForm.get('password')?.invalid) {
+                    <div class="text-red-500 text-sm">
+                        Mínimo 6 caracteres
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <button [disabled]="loginForm.invalid" type="submit" class="w-full bg-[#7C3AED] text-white p-2 rounded-lg hover:bg-blue-600
+      disabled:bg-[#7C3AED] disabled:cursor-not-allowed disabled:opacity-70
+      ">
+                Iniciar sesión
+            </button>
+        </form>
+    </div>
