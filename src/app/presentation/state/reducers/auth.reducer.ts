@@ -23,11 +23,15 @@ const initialState: AuthState = {
 
 export const authReducer = createReducer(
     initialState,
-    on(Actions.login, (state, { email, modules, token }) => ({
+    on(Actions.login, (state, { email, token }) => ({
         ...state,
         email,
-        modules,
         token,
+    })),
+
+      on(Actions.modules, (state, {modules}) => ({
+        ...state,
+        modules
     })),
 
      on(Actions.submodules, (state, {submodules}) => ({

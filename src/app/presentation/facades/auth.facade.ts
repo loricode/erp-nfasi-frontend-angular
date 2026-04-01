@@ -20,11 +20,12 @@ export class AuthFacade {
     login(email: string, password: string) {
         this.useCase.execute(email, password).subscribe({
             next: (response) => {
+                this.localStorageService.setLogalStorage("token", response.token);
+                this.localStorageService.setLogalStorage("userId", response.userId)
                 this.store.dispatch(login(response));
                 this.router.navigateByUrl('/home', { replaceUrl: true });
             }
         });
-
     }
 
     getModules = () => {

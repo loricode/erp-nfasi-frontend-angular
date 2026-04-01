@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AuthFacade } from '../../facades/auth.facade';
 import { Navbar } from '../../components/navbar/navbar';
+import { UserFacade } from '../../facades/user.facade';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +11,16 @@ import { Navbar } from '../../components/navbar/navbar';
 })
 export class Home {
 
-  private auth = inject(AuthFacade);
+  private userFacade = inject(UserFacade);
 
-  modules = this.auth.getModules();
+  modules = this.userFacade.getStateModules();
+
+  ngOnInit(){
+    this.userFacade.getModules();
+  }
 
   goModule = (moduleName:string, moduleId:string, route:string) => {
-    this.auth.goModule(moduleName, moduleId, route);
+    this.userFacade.goModule(moduleName, moduleId, route);
   }
 
 }
