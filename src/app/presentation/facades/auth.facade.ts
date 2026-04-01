@@ -4,6 +4,7 @@ import { Store } from "@ngrx/store";
 import { LoginUseCase } from "../../application/use-cases/login.usecase";
 import { login } from '../state/actions/auth.action';
 import { selectModules } from '../state/selectors/auth.selector';
+import { LocalStorageService } from "../../shared/services/utils/local-storage.service";
 
 @Injectable({ providedIn: 'root' })
 export class AuthFacade {
@@ -12,7 +13,8 @@ export class AuthFacade {
 
     constructor(
         private store: Store,
-        private useCase: LoginUseCase
+        private useCase: LoginUseCase,
+        private localStorageService: LocalStorageService
     ) { }
 
     login(email: string, password: string) {
@@ -29,6 +31,11 @@ export class AuthFacade {
 
       return this.store.selectSignal(selectModules);
 
+    }
+
+    goModule = (key:string, value:string, route:string) => {
+        this.localStorageService.setLogalStorage(key, value);
+        this.router.navigateByUrl(route);
     }
 
 }

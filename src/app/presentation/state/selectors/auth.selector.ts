@@ -19,3 +19,8 @@ export const selectModules = createSelector(
   selectAuthState,
   (state) => state.modules
 );
+
+export const selectSubModules = createSelector(
+  selectAuthState,
+  (state) => state.submodules
+);

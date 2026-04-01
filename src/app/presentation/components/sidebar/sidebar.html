@@ -13,7 +13,7 @@
     <!-- MENU SCROLLABLE -->
     <div class="sidebar-scroll">
 
-      @for (item of menu(); track item.label) {
+      @for (item of subModules(); track item.submoduleId) {
 
         <div class="mb-2">
 
@@ -25,27 +25,27 @@
                    hover:bg-violet-200/40 transition">
 
             <div class="flex items-center gap-2">
-              <i [class]="item.icon"></i>
-              <span>{{ item.label }}</span>
+              <!-- <i [class]="item.icon"></i> -->
+              <span>{{ item.submoduleName }}</span>
             </div>
 
             <i class="fas"
               [class.fa-chevron-down]="!item.open"
               [class.fa-chevron-up]="item.open">
-            </i>
+            </i> 
           </button>
 
           <!-- SUBMENU -->
-          @if (item.open) {
+          @if (item?.open) {
             <div class="ml-6 mt-2 flex flex-col gap-2">
 
-              @for (sub of item.children; track sub.label) {
-                <a [routerLink]="sub.route"
+              @for (sub of item.options; track sub.optionId) {
+                <a 
                   class="px-3 py-2 rounded-lg text-sm
                          text-violet-700
                          hover:bg-violet-200/40 transition">
 
-                  {{ sub.label }}
+                  {{ sub.optionName }}
                 </a>
               }
 

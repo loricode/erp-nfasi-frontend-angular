@@ -11,6 +11,6 @@ export class AuthApiRepository {
     private http = inject(HttpClient);
 
     login(params: LoginDto): Observable<AuthResponse> {
-        return this.http.post<AuthResponse>(`${environment.apiUrl}/auth/login`, params);
+        return this.http.post<AuthResponse>(`${environment.apiUrlSecurity}/auth/login`, params);
     }
 }
