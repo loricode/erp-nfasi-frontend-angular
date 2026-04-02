@@ -16,16 +16,6 @@ export class UserFacade {
     private router = inject(Router);
     private store = inject(Store);
 
-    validate = () => {
-        this.userValidateUseCase.execute().subscribe({
-            next: (response) => {
-                if (!response.valid) {
-                    this.router.navigateByUrl("/", { replaceUrl: true });
-                }
-            }
-        });
-    }
-
     getModules = () => {
 
         const userId = this.localStorageService.getLocalStorage("userId");
@@ -35,6 +25,16 @@ export class UserFacade {
                 this.store.dispatch(modules({ modules: response }));
             }
         })
+    }
+
+     validate = () => {
+        this.userValidateUseCase.execute().subscribe({
+            next: (response) => {
+                if (!response.valid) {
+                    this.router.navigateByUrl("/", { replaceUrl: true });
+                }
+            }
+        });
     }
 
      goModule = (key:string, value:string, route:string) => {

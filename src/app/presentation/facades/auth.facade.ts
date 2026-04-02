@@ -28,15 +28,4 @@ export class AuthFacade {
         });
     }
 
-    getModules = () => {
-
-      return this.store.selectSignal(selectModules);
-
-    }
-
-    goModule = (key:string, value:string, route:string) => {
-        this.localStorageService.setLogalStorage(key, value);
-        this.router.navigateByUrl(route);
-    }
-
 }

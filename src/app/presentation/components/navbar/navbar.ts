@@ -1,5 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { UserFacade } from '../../facades/user.facade';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -8,11 +7,5 @@ import { UserFacade } from '../../facades/user.facade';
   styleUrl: './navbar.css',
 })
 export class Navbar {
-  private userFacade = inject(UserFacade);
-  ngOnInit(){
-    console.log("init")
-    this.userFacade.validate();
-  }
-
 
 }
