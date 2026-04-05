@@ -1,27 +1,33 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { MenuFacade } from '../../facades/menu.facade';
+import { Submodulo } from '../../../domain/models/menu/menu.model';
+import { NgClass } from '@angular/common';
+import { Router } from '@angular/router';
 
-interface MenuItem {
-  icon?: string;
-  open?: boolean;
-  submoduleId: string;
-  submoduleName: string;
-  options: Array<{optionId:string, optionName:string}>;
-}
 
 @Component({
   selector: 'app-sidebar',
-  imports: [],
+  imports: [NgClass],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
 })
 export class Sidebar {
+
+  @Input("titleMenu") titleMenu = '';
   
   private menuFacade = inject(MenuFacade);
+  private router = inject(Router);
 
   subModules = this.menuFacade.getSubModules();
 
-  toggle(item: MenuItem) {
+  toggle = (item: Submodulo) => {
    this.menuFacade.toggle(item.submoduleId);
   }
+
+  goOption = (route:string) => {
+    this.router.navigateByUrl(route);
+
+  }
+
+
 }

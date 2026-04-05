@@ -3,29 +3,26 @@
                 border-r border-violet-300/30
                 shadow-[4px_0_20px_rgba(124,58,237,0.1)]">
 
-    <!-- HEADER -->
+    
     <div class="p-4 shrink-0">
       <h2 class="text-xl text-center font-semibold text-violet-900">
-        Inventario
+        {{titleMenu}}
       </h2>
     </div>
 
-    <!-- MENU SCROLLABLE -->
     <div class="sidebar-scroll">
 
       @for (item of subModules(); track item.submoduleId) {
 
         <div class="mb-2">
 
-          <!-- ITEM -->
           <button 
             (click)="toggle(item)"
             class="w-full flex items-center justify-between px-3 py-2 rounded-lg
                    text-violet-800 font-medium
-                   hover:bg-violet-200/40 transition">
+                   hover:bg-violet-200/40 transition hover:cursor-pointer">
 
             <div class="flex items-center gap-2">
-              <!-- <i [class]="item.icon"></i> -->
               <span>{{ item.submoduleName }}</span>
             </div>
 
@@ -35,17 +32,18 @@
             </i> 
           </button>
 
-          <!-- SUBMENU -->
           @if (item?.open) {
             <div class="ml-6 mt-2 flex flex-col gap-2">
 
               @for (sub of item.options; track sub.optionId) {
-                <a 
-                  class="px-3 py-2 rounded-lg text-sm
+                <a (click)="goOption(sub.route)" 
+                  class="pr-3 py-2  rounded-lg text-sm flex items-center gap-2
                          text-violet-700
-                         hover:bg-violet-200/40 transition">
-
-                  {{ sub.optionName }}
+                         hover:bg-violet-200/40 transition hover:cursor-pointer">
+                 
+                 <i  [ngClass]="[sub.icon, 'text-xl']"></i> 
+          
+                  <p>{{ sub.optionName }}</p> 
                 </a>
               }
 

@@ -7,8 +7,10 @@ export interface MenuResponse {
 interface Option {
     optionId: string;
     optionName: string;
+    icon:string;
+    route:string;
 }
 
 export interface Submodulo extends MenuResponse {
-  open: boolean;
+  open: boolean; 
 }
