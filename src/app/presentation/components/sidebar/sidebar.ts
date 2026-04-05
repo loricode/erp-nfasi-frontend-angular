@@ -18,7 +18,7 @@ export class Sidebar {
   private menuFacade = inject(MenuFacade);
   private router = inject(Router);
 
-  subModules = this.menuFacade.getSubModules();
+  subModules = this.menuFacade.getSubModules(this.router.url);
 
   toggle = (item: Submodulo) => {
    this.menuFacade.toggle(item.submoduleId);
@@ -26,7 +26,10 @@ export class Sidebar {
 
   goOption = (route:string) => {
     this.router.navigateByUrl(route);
+  }
 
+  isActive(route: string) {
+    return this.router.url.includes(route);
   }
 
 

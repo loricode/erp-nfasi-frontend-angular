@@ -37,9 +37,11 @@
 
               @for (sub of item.options; track sub.optionId) {
                 <a (click)="goOption(sub.route)" 
-                  class="pr-3 py-2  rounded-lg text-sm flex items-center gap-2
-                         text-violet-700
-                         hover:bg-violet-200/40 transition hover:cursor-pointer">
+                [ngClass]="[
+           'pr-3 py-2 rounded-lg text-sm flex items-center gap-2 transition',
+           'hover:bg-violet-200/40 cursor-pointer',
+           isActive(sub.route) ? 'bg-violet-200/60 font-semibold' : 'text-violet-700'
+         ]">
                  
                  <i  [ngClass]="[sub.icon, 'text-xl']"></i> 
           

@@ -4,7 +4,7 @@ export interface MenuResponse {
     options: Array<Option>;
 }
 
-interface Option {
+export interface Option {
     optionId: string;
     optionName: string;
     icon:string;
