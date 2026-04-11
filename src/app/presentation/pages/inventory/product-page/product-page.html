@@ -1,15 +1,10 @@
-<div class="w-full bg-white-200/40 rounded-xl 
-             p-6 text-center 
-             shadow-[0_8px_20px_rgba(124,58,237,0.15)]">
+<div class="w-full border bg-white border-violet-300/30">
 
     <div class="p-4">
 
         <div class="flex gap-3 flex-row mb-3">
-            <input type="text" formControlName="email" placeholder="Código"
-                class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
 
-            <input type="email" formControlName="email" placeholder="Nombre"
-                class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <p class="flex-grow">Consulta de productos</p>
 
             <div class="flex items-center gap-3">
                 <button class="w-10 h-10 flex justify-center items-center rounded-full
@@ -20,8 +15,20 @@
                         hover:shadow-[4px_4px_15px_rgba(124,58,237,0.3),-4px_-4px_15px_rgba(255,255,255,0.8)]
                         hover:bg-violet-200/70
                  ">
-                    <i class="text-sm fas fa-search"></i>
+                    <i class="text-sm fas fa-filter text-gray-800"></i>
                 </button>
+
+                <button class="w-10 h-10 flex justify-center items-center rounded-full
+                        bg-violet-200/50
+                        shadow-[inset_4px_4px_10px_rgba(124,58,237,0.25),inset_-4px_-4px_10px_rgba(255,255,255,0.8)]
+                        text-violet-600 text-2xl
+                        transition
+                        hover:shadow-[4px_4px_15px_rgba(124,58,237,0.3),-4px_-4px_15px_rgba(255,255,255,0.8)]
+                        hover:bg-violet-200/70
+                 ">
+                    <i class="text-sm fas fa-add text-gray-800"></i>
+                </button>
+
             </div>
 
         </div>
@@ -29,11 +36,12 @@
         <div class="overflow-x-auto">
             <table class="min-w-full border border-gray-200 rounded-lg overflow-hidden">
                 <!-- Header -->
-                <thead class="bg-gray-100">
+                <thead class="bg-slate-50">
                     <tr>
                         <th class="px-4 py-2 text-left text-sm font-semibold text-gray-600">Nombre</th>
                         <th class="px-4 py-2 text-left text-sm font-semibold text-gray-600">Categoría</th>
                         <th class="px-4 py-2 text-left text-sm font-semibold text-gray-600">Precio</th>
+                        <th class="px-4 py-2 text-center text-sm font-semibold text-gray-600">Estado</th>
                         <th class="px-4 py-2 text-center text-sm font-semibold text-gray-600">Estado</th>
                     </tr>
                 </thead>
@@ -46,6 +54,15 @@
                         <td class="text-left px-4 py-2">{{ item.categoria }}</td>
                         <td class="text-left px-4 py-2">{{ item.precio }}</td>
                         <td class="text-center px-4 py-2">{{ item.estado }}</td>
+                        <td class="text-center px-4 py-2">
+
+                            <div class="flex gap-2 justify-center items-center">
+                                <i class="fas fa-trash"></i>
+                                <i class="fas fa-edit"></i>
+                            </div>
+
+
+                        </td>
                     </tr>}
                 </tbody>
             </table>
@@ -53,4 +70,32 @@
 
     </div>
 
+  
+
 </div>
+
+  <app-modal [isOpen]="isModalOpen" (close)="isModalOpen = false">
+
+        <div class="flex gap-3 flex-col mb-3 pt-4">
+            <input type="text" formControlName="email" placeholder="Código"
+                class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+            <input type="email" formControlName="email" placeholder="Nombre"
+                class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+            <div class="flex items-center justify-end">
+                <button class="w-10 h-10 flex justify-center items-center rounded-full
+                        bg-violet-200/50
+                        shadow-[inset_4px_4px_10px_rgba(124,58,237,0.25),inset_-4px_-4px_10px_rgba(255,255,255,0.8)]
+                        text-violet-600 text-2xl
+                        transition
+                        hover:shadow-[4px_4px_15px_rgba(124,58,237,0.3),-4px_-4px_15px_rgba(255,255,255,0.8)]
+                        hover:bg-violet-200/70
+                 ">
+                    <i class="text-sm fas fa-search text-gray-700"></i>
+                </button>
+            </div>
+
+        </div>
+
+    </app-modal>

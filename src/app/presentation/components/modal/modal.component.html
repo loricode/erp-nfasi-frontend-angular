@@ -1,0 +1,23 @@
+@if (isOpen) {
+  <div class="fixed inset-0 flex items-center justify-center z-50">
+
+    <div class="relative bg-white rounded-2xl shadow-lg pt-6 pl-6 pr-6 w-full max-w-md z-10 animate-fade-in">
+      
+            <button  (click)="closeModal()" class="absolute top-2 right-5 w-8 h-8 flex justify-center items-center rounded-full
+                        bg-violet-200/50
+                        shadow-[inset_4px_4px_10px_rgba(124,58,237,0.25),inset_-4px_-4px_10px_rgba(255,255,255,0.8)]
+                        text-violet-600 text-2xl
+                        transition
+                        hover:shadow-[4px_4px_15px_rgba(124,58,237,0.3),-4px_-4px_15px_rgba(255,255,255,0.8)]
+                        hover:bg-violet-200/70
+                 ">
+                    <i class="text-sm fas fa-close text-gray-700"></i>
+                </button>
+
+                <div class="py-2 mt4">
+                    <ng-content></ng-content>
+                </div>
+
+    </div>
+  </div>
+}

@@ -5,7 +5,7 @@
 
     
     <div class="p-4 shrink-0">
-      <h2 class="text-xl text-center font-semibold text-violet-900">
+      <h2 class="text-xl text-center font-semibold text-gray-700">
         {{titleMenu}}
       </h2>
     </div>
@@ -19,14 +19,14 @@
           <button 
             (click)="toggle(item)"
             class="w-full flex items-center justify-between px-3 py-2 rounded-lg
-                   text-violet-800 font-medium
+                   text-gray-800 font-medium
                    hover:bg-violet-200/40 transition hover:cursor-pointer">
 
             <div class="flex items-center gap-2">
-              <span>{{ item.submoduleName }}</span>
+              <span class="text-gray-700">{{ item.submoduleName }}</span>
             </div>
 
-            <i class="fas"
+            <i class="text-gray-700 fas"
               [class.fa-chevron-down]="!item.open"
               [class.fa-chevron-up]="item.open">
             </i> 
@@ -40,7 +40,7 @@
                 [ngClass]="[
            'pr-3 py-2 rounded-lg text-sm flex items-center gap-2 transition',
            'hover:bg-violet-200/40 cursor-pointer',
-           isActive(sub.route) ? 'bg-violet-200/60 font-semibold' : 'text-violet-700'
+           isActive(sub.route) ? 'bg-violet-300/20 text-gray-700 font-semibold' : 'text-gray-700'
          ]">
                  
                  <i  [ngClass]="[sub.icon, 'text-xl']"></i> 
